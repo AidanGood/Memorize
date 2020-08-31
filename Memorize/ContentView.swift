@@ -6,14 +6,17 @@
 //  Copyright © 2020 Aidan Good. All rights reserved.
 //
 // Following along Stanford CS 193p 2020
+//
+// View
 
 import SwiftUI
 
 struct ContentView: View {
+//    create the game that shows up on screen
     var viewModel: EmojiMemoryGame
-    
+//    UI on the screen
     var body: some View {
-        return VStack(content: {
+        return HStack(content: {
             return ForEach(viewModel.cards, content: { card in
                 CardView(card: card).onTapGesture(perform: { self.viewModel.choose(card: card)})
             })
@@ -23,11 +26,10 @@ struct ContentView: View {
         .font(Font.largeTitle)
     }
 }
-
+// UI handling how the cards look
 struct CardView: View {
     
     var card: MemoryGame<String>.Card
-    
     var body: some View {
         return ZStack(content: {
             if card.isFaceUp {
@@ -38,12 +40,12 @@ struct CardView: View {
             else {
                 RoundedRectangle(cornerRadius: 10.0).fill(Color.orange)
             }
-
+            
         })
-
+//          Set aspect Ratio to 2/3
+            .aspectRatio(2/3, contentMode: .fit)
     }
 }
-
 
 
 

@@ -5,15 +5,17 @@
 //  Created by Aidan Good on 7/23/20.
 //  Copyright © 2020 Aidan Good. All rights reserved.
 //
+// ModelView
 
 import SwiftUI
 
 class EmojiMemoryGame {
+//    TODO: Understand this line of code
     private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
-        
+//        Method that 'makes' the game with the emojis 
     static func createMemoryGame() -> MemoryGame<String> {
-        let emojis: Array<String> = ["👻", "😒"]
-        return MemoryGame<String>(numPairs: emojis.count, cardContentFactory: {(pairIndex: Int) -> String in
+        let emojis: Array<String> = ["👻", "😒", "🤡", "🐶", "🦋", "😝"]
+        return MemoryGame<String>(numPairs: Int.random(in: 3...5), cardContentFactory: {(pairIndex: Int) -> String in
             return emojis[pairIndex]
         })
     }
