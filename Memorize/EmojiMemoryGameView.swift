@@ -13,7 +13,7 @@ import SwiftUI
 
 struct EmojiMemoryGameView: View {
 //    create the game that shows up on screen
-    var viewModel: EmojiMemoryGame
+    @ObservedObject var viewModel: EmojiMemoryGame
 //    UI on the screen
     var body: some View {
         return HStack(content: {
