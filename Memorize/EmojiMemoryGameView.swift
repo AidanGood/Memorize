@@ -23,28 +23,35 @@ struct EmojiMemoryGameView: View {
         })
         .foregroundColor(Color.orange)
         .padding()
-        .font(Font.largeTitle)
     }
 }
+
 // UI handling how the cards look
 struct CardView: View {
     
     var card: MemoryGame<String>.Card
     var body: some View {
-        return ZStack(content: {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: 10.0).fill(Color.white)
-                RoundedRectangle(cornerRadius: 10.0).stroke(lineWidth: 3)
-                Text(card.content)
-            }
-            else {
-                RoundedRectangle(cornerRadius: 10.0).fill(Color.orange)
-            }
-            
+        GeometryReader(content: { geometry in
+            return ZStack(content: {
+                if card.isFaceUp {
+                    RoundedRectangle(cornerRadius: cornerRadius).fill(Color.white)
+                    RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: edgeLineWidth)
+                    Text(card.content)
+                }
+                else {
+                    RoundedRectangle(cornerRadius: cornerRadius).fill(Color.orange)
+                }
+            })
+            .font(Font.system(size: min(geometry.size.width, geometry.size.height) * fontScaleFactor))
         })
 //          Set aspect Ratio to 2/3
             .aspectRatio(2/3, contentMode: .fit)
     }
+    
+    // MARK: - Drawing Constants
+    let cornerRadius: CGFloat = 10.0
+    let edgeLineWidth: CGFloat = 3
+    let fontScaleFactor: CGFloat = 0.75
 }
 
 
