@@ -5,7 +5,7 @@
 //  Created by Aidan Good on 7/23/20.
 //  Copyright © 2020 Aidan Good. All rights reserved.
 //
-// ModelView
+// Controller
 
 import SwiftUI
 
